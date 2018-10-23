@@ -25,7 +25,7 @@ It's essential for root sandbox environmentthe creation
 ## Manual Build
 
 ```bash
-git clone https://github.com/Issogr/node-puppeteer.git
+git clone https://github.com/issogr/node-puppeteer.git
 cd node-puppeteer
 bash build.sh
 ```

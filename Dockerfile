@@ -7,8 +7,8 @@ RUN apt-get update && \
   libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
   fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libcairo-gobject2 libxinerama1 \
   libgtk2.0-0 libpangoft2-1.0-0 libthai0 libpixman-1-0 libxcb-render0 libharfbuzz0b libdatrie1 \
-  libgraphite2-3 --no-install-recommends --allow-remove-essential && \
-  apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
+  libgraphite2-3 --no-install-recommends && \
+  apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
 
 # Add user so we don't need --no-sandbox.
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
