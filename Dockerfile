@@ -13,6 +13,8 @@ RUN apt-get update && \
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
   && mkdir -p /home/pptruser/app
 
+COPY ./entry.sh /home/pptruser
+
 RUN chmod -R +x /home/pptruser && chown -R pptruser:pptruser /home/pptruser
 
 WORKDIR /home/pptruser/app
@@ -20,6 +22,4 @@ WORKDIR /home/pptruser/app
 # Run everything after as non-privileged user.
 USER pptruser
 
-RUN cd /home/pptruser/app && npm i puppeteer request && npm cache clean --force
-
-CMD ["node", "index.js"]
+ENTRYPOINT [ "/home/pptruser/entry.sh" ]

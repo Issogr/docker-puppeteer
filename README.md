@@ -6,7 +6,7 @@
 docker create --name=puppeteer \
 -e PGID=1000 -e PUID=1000 \
 -e TZ=Europe/Rome \
-#--cap-add=SYS_ADMIN \
+-v <local project dir>:/home/pptruser/app \
 node-puppeteer:latest
 ```
 
@@ -20,7 +20,7 @@ docker start puppeteer
 --cap-add=SYS_ADMIN
 ```
 
-It's essential for root sandbox environmentthe creation 
+It's essential for root sandbox environmentthe creation
 
 ## Manual Build
 
@@ -28,7 +28,6 @@ It's essential for root sandbox environmentthe creation
 git clone https://github.com/Issogr/node-puppeteer.git
 cd node-puppeteer
 bash build.sh
-docker start puppeteer
 ```
 
 ## Work inspired by
