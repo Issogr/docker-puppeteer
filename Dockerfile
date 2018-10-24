@@ -12,13 +12,13 @@ RUN apt-get update && \
 
 RUN usermod -a -G audio,video node
 
+COPY ./entry.sh /home/node
+
+RUN chmod +x /home/node/entry.sh && mkdir -p /home/node/app && chown -R node:node /home/node
+
 WORKDIR /home/node/app
 
 # Run everything after as non-privileged user.
 USER node
-
-COPY ./entry.sh /home/node
-
-RUN mkdir -p /home/node/app
 
 ENTRYPOINT [ "/home/node/entry.sh" ]
