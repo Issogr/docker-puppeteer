@@ -10,17 +10,15 @@ RUN apt-get update && \
   libgraphite2-3 --no-install-recommends && \
   apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
 
-# Add user so we don't need --no-sandbox.
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-  && mkdir -p /home/pptruser/app
+RUN usermod -a -G audio,video node
 
-COPY ./entry.sh /home/pptruser
-
-RUN chmod -R +x /home/pptruser && chown -R pptruser:pptruser /home/pptruser
-
-WORKDIR /home/pptruser/app
+WORKDIR /home/node/app
 
 # Run everything after as non-privileged user.
-USER pptruser
+USER node
 
-ENTRYPOINT [ "/home/pptruser/entry.sh" ]
+COPY ./entry.sh /home/node
+
+RUN mkdir -p /home/node/app
+
+ENTRYPOINT [ "/home/node/entry.sh" ]

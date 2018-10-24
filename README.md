@@ -7,7 +7,7 @@ docker create --name=puppeteer \
 -e PGID=1000 -e PUID=1000 \
 -e TZ=Europe/Rome \
 -v <local project dir>:/home/pptruser/app \
-node-puppeteer:latest
+issogr/node-puppeteer:latest
 ```
 
 ```bash
@@ -16,11 +16,13 @@ docker start puppeteer
 
 ## Note
 
+The default docker user is node id=1000 uid=1000.
+
+Below command is essential for root sandbox environmentthe creation.
+
 ```bash
 --cap-add=SYS_ADMIN
 ```
-
-It's essential for root sandbox environmentthe creation
 
 ## Manual Build
 
