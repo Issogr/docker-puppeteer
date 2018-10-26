@@ -7,7 +7,7 @@ RUN apt-get update && \
   libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates \
   fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libcairo-gobject2 libxinerama1 \
   libgtk2.0-0 libpangoft2-1.0-0 libthai0 libpixman-1-0 libxcb-render0 libharfbuzz0b libdatrie1 \
-  libgraphite2-3 --no-install-recommends && \
+  libgraphite2-3 dumb-init --no-install-recommends && \
   apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
 
 RUN usermod -a -G audio,video node
@@ -21,4 +21,7 @@ WORKDIR /home/node/app
 # Run everything after as non-privileged user.
 USER node
 
-ENTRYPOINT [ "/home/node/entry.sh" ]
+# It's a good idea to use dumb-init to help prevent zombie chrome processes.
+ENTRYPOINT ["dumb-init", "--"]
+
+CMD ["bash", "/home/node/entry.sh"]
