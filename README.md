@@ -6,7 +6,7 @@
 docker create --name=puppeteer \
 -e PGID=1000 -e PUID=1000 \
 -e TZ=Europe/Rome \
--v <local project dir>:/home/pptruser/app \
+-v <local project dir>:/home/node/app \
 issogr/node-puppeteer:latest
 ```
 
