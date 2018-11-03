@@ -6,7 +6,7 @@
 docker create --name=puppeteer \
 -e PGID=1000 -e PUID=1000 \
 -e TZ=Europe/Rome \
--v <local project dir>:/home/pptruser/app \
+-v <local project dir>:/home/node/app \
 issogr/node-puppeteer:latest
 ```
 
@@ -33,5 +33,6 @@ bash build.sh
 ```
 
 ## Work inspired by
-* Docker-node https://github.com/nodejs/docker-node#run-a-single-nodejs-script
-* Official Google Guide https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
+* [Docker-node](https://github.com/nodejs/docker-node#run-a-single-nodejs-script)
+* [Official Google Guide](https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md)
+* [dumb-init](https://github.com/Yelp/dumb-init)

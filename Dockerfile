@@ -10,6 +10,10 @@ RUN apt-get update && \
   libgraphite2-3 --no-install-recommends && \
   apt-get clean && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && rm -rf /src/*.deb
 
+# It's a good idea to use dumb-init to help prevent zombie chrome processes.
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64.deb
+RUN dpkg -i dumb-init_*.deb
+
 RUN usermod -a -G audio,video node
 
 COPY ./entry.sh /home/node
@@ -21,4 +25,7 @@ WORKDIR /home/node/app
 # Run everything after as non-privileged user.
 USER node
 
-ENTRYPOINT [ "/home/node/entry.sh" ]
+# It's a good idea to use dumb-init to help prevent zombie chrome processes.
+ENTRYPOINT ["dumb-init", "--"]
+
+CMD ["bash", "/home/node/entry.sh"]
