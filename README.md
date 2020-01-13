@@ -1,4 +1,4 @@
-# node-puppeteer
+# Docker Image for [Puppeteer](https://github.com/puppeteer/puppeteer)
 
 ![icon](https://raw.githubusercontent.com/Issogr/docker-puppeteer/master/image.png)
 
