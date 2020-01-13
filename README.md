@@ -1,5 +1,7 @@
 # node-puppeteer
 
+![icon](https://raw.githubusercontent.com/Issogr/docker-puppeteer/master/image.png)
+
 ## Snippets
 
 ```bash
@@ -7,7 +9,7 @@ docker create --name=puppeteer \
 -e PGID=1000 -e PUID=1000 \
 -e TZ=Europe/Rome \
 -v <local project dir>:/home/node/app \
-issogr/node-puppeteer:latest
+issogr/puppeteer:latest
 ```
 
 ```bash
@@ -27,7 +29,7 @@ Below command is essential for root sandbox environmentthe creation.
 ## Manual Build
 
 ```bash
-git clone https://github.com/issogr/node-puppeteer.git
+git clone https://github.com/Issogr/docker-puppeteer.git
 cd node-puppeteer
 bash build.sh
 ```
