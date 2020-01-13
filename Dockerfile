@@ -14,6 +14,8 @@ RUN usermod -a -G audio,video node
 # --unsafe-perm=true need to use sudo account
 RUN npm install -g puppeteer --unsafe-perm=true
 
+ENV NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
+
 RUN mkdir -p /home/node/app && chown -R node:node /home/node
 
 WORKDIR /home/node/app

@@ -35,6 +35,7 @@ bash build.sh
 ```
 
 ## Work inspired by
+
 * [Docker-node](https://github.com/nodejs/docker-node#run-a-single-nodejs-script)
 * [Official Google Guide](https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md)
 * [dumb-init](https://github.com/Yelp/dumb-init)
